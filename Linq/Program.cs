@@ -5,6 +5,21 @@ internal class Program
     static void Main(string[] args)
     {
         List<Person> persons = GetPersons();
+
+        foreach (Person person in persons)
+        {
+            Console.WriteLine(person);
+        }
+
+        persons.ForEach(p => Console.WriteLine(p));
+        persons.ForEach(Console.WriteLine);
+        persons.ForEach(p => Print(p));
+        persons.ForEach(Print);
+    }
+
+    private static void Print(Person p)
+    {
+        Console.WriteLine(p);
     }
 
 
