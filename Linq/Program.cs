@@ -6,20 +6,37 @@ internal class Program
     {
         List<Person> persons = GetPersons();
 
-        foreach (Person person in persons)
-        {
-            Console.WriteLine(person);
-        }
+        //foreach (Person person in persons)
+        //{
+        //    Console.WriteLine(person);
+        //}
 
-        persons.ForEach(p => Console.WriteLine(p));
-        persons.ForEach(Console.WriteLine);
-        persons.ForEach(p => Print(p));
-        persons.ForEach(Print);
+        //persons.ForEach(p => Console.WriteLine(p));
+        //persons.ForEach(Console.WriteLine);
+        //persons.ForEach(p => Print(p));
+        //persons.ForEach(Print);
+
+
+        //var personOver30 = persons.CustomWhere(p => p.Age > 30)
+        //                          .Where(p => p.Name.Length > 3)
+        //                          .Select(p => p.Name);
+
+        var personOver30 = persons.Where(p => Over30(p))
+                                  // .Where(p => p.Name.Length > 3)
+                                  .Select(p => p.Age)
+                                  .Sum();
+
+        var firstNisse = persons.FirstOrDefault(Over30);
     }
 
     private static void Print(Person p)
     {
         Console.WriteLine(p);
+    }
+
+    private static bool Over30(Person p)
+    {
+        return p.Age > 30;
     }
 
 
