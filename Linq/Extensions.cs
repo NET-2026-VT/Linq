@@ -14,4 +14,19 @@ internal static class Extensions
                 yield return item;
         }
     }
+
+    public static void ForEach<T>(this IEnumerable<T> source, Action<T> action)
+    {
+        foreach (var item in source)
+        {
+            action?.Invoke(item);
+        }
+    }
+    //public static void ForEach(this int[] source, Action<int> action)
+    //{
+    //    foreach (var item in source)
+    //    {
+    //        action?.Invoke(item);
+    //    }
+    //}
 }

@@ -6,10 +6,20 @@ internal class Program
     {
         List<Person> persons = GetPersons();
 
+        
+
         //foreach (Person person in persons)
         //{
         //    Console.WriteLine(person);
-        //}
+        
+
+        var arrP = persons.ToArray();
+
+        var intArr = new  int[] { 1, 2, 3, 4 };
+
+        intArr.ForEach(Console.WriteLine);
+
+        arrP.ForEach(Console.WriteLine);
 
         //persons.ForEach(p => Console.WriteLine(p));
         //persons.ForEach(Console.WriteLine);
@@ -25,6 +35,15 @@ internal class Program
                                   // .Where(p => p.Name.Length > 3)
                                   .Select(p => p.Age)
                                   .Sum();
+
+        var newObj = persons.Where(p => Over30(p))
+                                  .Select(p => new NewObj
+                                  {
+                                      Name = p.Name,
+                                      NamesLength = p.Name.Length,
+                                      Time = DateTime.Now
+                                  });
+                              
 
         var firstNisse = persons.FirstOrDefault(Over30);
     }
